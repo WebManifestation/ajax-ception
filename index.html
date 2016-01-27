@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>Myntra Content</title>
+</head>
+<body>
+
+	<div class="content"></div>
+
+
+
+	<div id="test"></div>
+	<div id="console"></div>
+
+	<script src="js/jquery-1.12.0.min.js"></script>
+	<script type="text/javascript">
+		(function ($) {
+
+		$test = $('#test');
+		$console = $('#console');
+			
+
+
+		$.fetchScript = function( url, options ) {
+
+			// Allow user to set any option except for dataType, cache, and url
+			options = $.extend( options || {}, {
+			dataType: "script",
+			cache: true,
+			url: url
+			});
+
+			return $.ajax( options );
+		};
+
+
+		//load main script
+		url = 'js/main.js';
+		$.fetchScript( url )
+			.done(function(script, status) {
+				console.log(status);
+			})
+			.fail( function(jqxhr, settings, exception) {
+				console.log(jqxhr);
+			});
+
+		//
+
+
+		})(jQuery);
+	</script>
+</body>
+</html>
